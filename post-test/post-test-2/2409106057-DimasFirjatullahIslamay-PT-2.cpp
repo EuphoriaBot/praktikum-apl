@@ -4,10 +4,10 @@ using namespace std;
 int main()
 {
     string nama;
-    string PasswordNama = "DimasAnjayMabarProfessional";
+    string PasswordNama = "Dimas";
+    string NIM;
+    string PasswordNIM = "2409106057";
     string DaftarTanaman[100][3];
-    int NIM;
-    int PasswordNIM = 2409106057;
     int coba = 0;
     int pilihan;
     int max_tanaman = 100;
@@ -64,7 +64,7 @@ int main()
             }
             else
             {
-                cout << "Kapasitas Penyimpanan Penuh" << endl;
+                cout << "Tanaman Penuh" << endl;
             }
         }
         else if (pilihan == 2)
