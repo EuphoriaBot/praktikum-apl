@@ -69,10 +69,17 @@ int main()
         }
         else if (pilihan == 2)
         {
-            cout << "=== DAFTAR TANAMAN ===" << endl;
-            for (int i = 0; i < Data; i++)
+            if (Data == 0)
             {
-                cout << i + 1 << ". " << DaftarTanaman[i][0] << " | " << DaftarTanaman[i][1] << " | " << DaftarTanaman[i][2] << endl;
+                cout << "Tanaman Masih Kosong" << endl;
+            }
+            else
+            {
+                cout << "=== DAFTAR TANAMAN ===" << endl;
+                for (int i = 0; i < Data; i++)
+                {
+                    cout << i + 1 << ". " << DaftarTanaman[i][0] << " | " << DaftarTanaman[i][1] << " | " << DaftarTanaman[i][2] << endl;
+                }
             }
         }
         else if (pilihan == 3)
@@ -118,7 +125,7 @@ int main()
         }
         else if (pilihan == 5)
         {
-            cout << "Terima kasih Telah Menggunakan Program Ini" << endl;
+            cout << "Terima Kasih Telah Menggunakan Program Ini" << endl;
             break;
         }
         else
