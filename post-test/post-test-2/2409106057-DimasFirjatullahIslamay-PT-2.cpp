@@ -15,11 +15,12 @@ int main()
     int Pilihan;
     int Data = 0;
 
-    cout << "=== Daftar Akun ===" << endl;
-    cout << "=== Silahkan Masukkan Nama Anda ===" << endl;
+    cout << "======= Daftar Akun =======" << endl;
+    cout << "Masukkan Nama Anda: ";
     cin >> PasswordNama;
-    cout << "=== Silahkan Masukkan NIM Anda ===" << endl;
+    cout << "Masukkan NIM Anda: ";
     cin >> PasswordNIM;
+    cout << "Daftar Akun Berhasil" << endl;
 
     while (Coba < 3)
     {
@@ -158,7 +159,7 @@ int main()
         }
         else if (Pilihan == 5)
         {
-            cout << "Terima Kasih Telah Menggunakan Program Ini" << endl;
+            cout << "TerimaKasih Telah Menggunakan Program Ini" << endl;
             break;
         }
         else
