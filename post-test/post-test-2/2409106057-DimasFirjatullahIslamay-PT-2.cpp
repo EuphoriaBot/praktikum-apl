@@ -5,8 +5,8 @@ int main()
 {
     string Nama;
     string NIM;
-    string PasswordNama = "Dimas";
-    string PasswordNIM = "2409106057";
+    string PasswordNama;
+    string PasswordNIM;
     string DaftarTanaman[100][3];
     int FrekuensiSiram[100];
     int FrekuensiPupuk[100];
@@ -15,8 +15,15 @@ int main()
     int Pilihan;
     int Data = 0;
 
+    cout << "=== Daftar Akun ===" << endl;
+    cout << "=== Silahkan Masukkan Nama Anda ===" << endl;
+    cin >> PasswordNama;
+    cout << "=== Silahkan Masukkan NIM Anda ===" << endl;
+    cin >> PasswordNIM;
+
     while (Coba < 3)
     {
+        cout << "=== Login Akun ===" << endl;
         cout << "Masukkan Nama Anda: ";
         cin >> Nama;
         cout << "Masukkan NIM Anda: ";
