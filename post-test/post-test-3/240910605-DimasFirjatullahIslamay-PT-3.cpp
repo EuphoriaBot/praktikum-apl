@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 struct Akun
@@ -20,38 +21,37 @@ struct Tanaman
 struct User
 {
     Akun akun;
-    Tanaman daftarTanaman[100];
-    int totalTanaman = 0;
+    vector<Tanaman> daftarTanaman;
 };
 
-// Array penyimpanan akun
-User daftarUser[100];
-int totalUser = 0;
+// Vector untuk menyimpan user yang terdaftar
+vector<User> daftarUser;
 
 int main()
 {
     int pilihan;
     string Nama, NIM;
-    int coba = 0;
-    int indexUser = -1; // Menyimpan index user yang login
+    int coba;
+    int indexUser = -1;
 
     while (true)
     {
-        cout << "=== MENU UTAMA ===" << endl;
-        cout << "1. Daftar Akun" << endl;
-        cout << "2. Login Akun" << endl;
-        cout << "3. Keluar Program" << endl;
+        cout << "=== MENU UTAMA ===\n";
+        cout << "1. Daftar Akun\n";
+        cout << "2. Login Akun\n";
+        cout << "3. Keluar Program\n";
         cout << "Pilih menu: ";
         cin >> pilihan;
 
         if (pilihan == 1)
         { // **Register Akun**
+            User userBaru;
             cout << "Masukkan Nama: ";
-            cin >> daftarUser[totalUser].akun.Nama;
+            cin >> userBaru.akun.Nama;
             cout << "Masukkan NIM: ";
-            cin >> daftarUser[totalUser].akun.NIM;
-            totalUser++;
-            cout << "Akun Berhasil Didaftarkan!" << endl;
+            cin >> userBaru.akun.NIM;
+            daftarUser.push_back(userBaru);
+            cout << "Akun Berhasil Didaftarkan!\n";
         }
         else if (pilihan == 2)
         { // **Login Akun**
@@ -64,7 +64,7 @@ int main()
                 cout << "Masukkan NIM: ";
                 cin >> NIM;
 
-                for (int i = 0; i < totalUser; i++)
+                for (int i = 0; i < daftarUser.size(); i++)
                 {
                     if (Nama == daftarUser[i].akun.Nama && NIM == daftarUser[i].akun.NIM)
                     {
@@ -75,62 +75,62 @@ int main()
 
                 if (indexUser != -1)
                 {
-                    cout << "Login Berhasil!" << endl;
+                    cout << "Login Berhasil!\n";
                     break;
                 }
                 else
                 {
-                    cout << "Nama atau NIM salah!" << endl;
+                    cout << "Nama atau NIM salah!\n";
                     coba++;
                 }
             }
 
             if (coba == 3)
             {
-                cout << "Anda salah 3 kali, program berhenti." << endl;
+                cout << "Anda salah 3 kali, program berhenti.\n";
                 return 0;
             }
 
             // **MENU TANAMAN SETELAH LOGIN**
             while (true)
             {
-                cout << "=== MENU TANAMAN HIAS ===" << endl;
-                cout << "1. Tambah Tanaman" << endl;
-                cout << "2. Tampilkan Tanaman" << endl;
-                cout << "3. Update Tanaman" << endl;
-                cout << "4. Hapus Tanaman" << endl;
-                cout << "5. Logout" << endl;
+                cout << "=== MENU TANAMAN HIAS ===\n";
+                cout << "1. Tambah Tanaman\n";
+                cout << "2. Tampilkan Tanaman\n";
+                cout << "3. Update Tanaman\n";
+                cout << "4. Hapus Tanaman\n";
+                cout << "5. Logout\n";
                 cout << "Pilih menu: ";
                 cin >> pilihan;
 
                 if (pilihan == 1)
                 { // **Tambah Tanaman**
-                    int idx = daftarUser[indexUser].totalTanaman;
+                    Tanaman tanamanBaru;
                     cout << "Masukkan Nama Tanaman: ";
-                    cin >> daftarUser[indexUser].daftarTanaman[idx].NamaTanaman;
+                    cin >> tanamanBaru.NamaTanaman;
                     cout << "Masukkan Jenis Tanaman: ";
-                    cin >> daftarUser[indexUser].daftarTanaman[idx].JenisTanaman;
+                    cin >> tanamanBaru.JenisTanaman;
                     cout << "Masukkan Jumlah Tanaman: ";
-                    cin >> daftarUser[indexUser].daftarTanaman[idx].Jumlah;
+                    cin >> tanamanBaru.Jumlah;
                     cout << "Masukkan Frekuensi Penyiraman (kali/minggu): ";
-                    cin >> daftarUser[indexUser].daftarTanaman[idx].FrekuensiSiram;
+                    cin >> tanamanBaru.FrekuensiSiram;
                     cout << "Masukkan Frekuensi Pemupukan (kali/bulan): ";
-                    cin >> daftarUser[indexUser].daftarTanaman[idx].FrekuensiPupuk;
+                    cin >> tanamanBaru.FrekuensiPupuk;
                     cout << "Masukkan Suhu Tanaman (derajat Celcius): ";
-                    cin >> daftarUser[indexUser].daftarTanaman[idx].Suhu;
-                    daftarUser[indexUser].totalTanaman++;
-                    cout << "Tanaman Berhasil Ditambahkan!" << endl;
+                    cin >> tanamanBaru.Suhu;
+                    daftarUser[indexUser].daftarTanaman.push_back(tanamanBaru);
+                    cout << "Tanaman Berhasil Ditambahkan!\n";
                 }
                 else if (pilihan == 2)
                 { // **Tampilkan Tanaman**
-                    if (daftarUser[indexUser].totalTanaman == 0)
+                    if (daftarUser[indexUser].daftarTanaman.empty())
                     {
-                        cout << "Belum ada tanaman." << endl;
+                        cout << "Belum ada tanaman.\n";
                     }
                     else
                     {
-                        cout << "=== DAFTAR TANAMAN ===" << endl;
-                        for (int i = 0; i < daftarUser[indexUser].totalTanaman; i++)
+                        cout << "=== DAFTAR TANAMAN ===\n";
+                        for (int i = 0; i < daftarUser[indexUser].daftarTanaman.size(); i++)
                         {
                             cout << i + 1 << ". "
                                  << daftarUser[indexUser].daftarTanaman[i].NamaTanaman << " | "
@@ -138,7 +138,7 @@ int main()
                                  << daftarUser[indexUser].daftarTanaman[i].Jumlah << " | "
                                  << daftarUser[indexUser].daftarTanaman[i].FrekuensiSiram << " kali/minggu | "
                                  << daftarUser[indexUser].daftarTanaman[i].FrekuensiPupuk << " kali/bulan | "
-                                 << daftarUser[indexUser].daftarTanaman[i].Suhu << " °C" << endl;
+                                 << daftarUser[indexUser].daftarTanaman[i].Suhu << " °C\n";
                         }
                     }
                 }
@@ -147,9 +147,9 @@ int main()
                     int index;
                     cout << "Masukkan Nomor Tanaman yang ingin diupdate: ";
                     cin >> index;
-                    if (index > 0 && index <= daftarUser[indexUser].totalTanaman)
+                    if (index > 0 && index <= daftarUser[indexUser].daftarTanaman.size())
                     {
-                        index--; // Menyesuaikan dengan array (mulai dari 0)
+                        index--;
                         cout << "Masukkan Nama Tanaman Baru: ";
                         cin >> daftarUser[indexUser].daftarTanaman[index].NamaTanaman;
                         cout << "Masukkan Jenis Tanaman Baru: ";
@@ -162,11 +162,11 @@ int main()
                         cin >> daftarUser[indexUser].daftarTanaman[index].FrekuensiPupuk;
                         cout << "Masukkan Suhu Baru: ";
                         cin >> daftarUser[indexUser].daftarTanaman[index].Suhu;
-                        cout << "Tanaman Berhasil Diperbarui!" << endl;
+                        cout << "Tanaman Berhasil Diperbarui!\n";
                     }
                     else
                     {
-                        cout << "Nomor Tidak Valid" << endl;
+                        cout << "Nomor Tidak Valid\n";
                     }
                 }
                 else if (pilihan == 4)
@@ -174,40 +174,35 @@ int main()
                     int index;
                     cout << "Masukkan Nomor Tanaman yang ingin dihapus: ";
                     cin >> index;
-                    if (index > 0 && index <= daftarUser[indexUser].totalTanaman)
+                    if (index > 0 && index <= daftarUser[indexUser].daftarTanaman.size())
                     {
-                        index--;
-                        for (int i = index; i < daftarUser[indexUser].totalTanaman - 1; i++)
-                        {
-                            daftarUser[indexUser].daftarTanaman[i] = daftarUser[indexUser].daftarTanaman[i + 1];
-                        }
-                        daftarUser[indexUser].totalTanaman--;
-                        cout << "Tanaman Berhasil Dihapus!" << endl;
+                        daftarUser[indexUser].daftarTanaman.erase(daftarUser[indexUser].daftarTanaman.begin() + (index - 1));
+                        cout << "Tanaman Berhasil Dihapus!\n";
                     }
                     else
                     {
-                        cout << "Nomor Tidak Valid" << endl;
+                        cout << "Nomor Tidak Valid\n";
                     }
                 }
                 else if (pilihan == 5)
                 { // **Logout**
-                    cout << "Logout Berhasil!" << endl;
+                    cout << "Logout Berhasil!\n";
                     break;
                 }
                 else
                 {
-                    cout << "Pilihan Tidak Valid" << endl;
+                    cout << "Pilihan Tidak Valid\n";
                 }
             }
         }
         else if (pilihan == 3)
         { // **Keluar Program**
-            cout << "Program Berhenti." << endl;
+            cout << "Program Berhenti.\n";
             return 0;
         }
         else
         {
-            cout << "Pilihan Tidak Valid" << endl;
+            cout << "Pilihan Tidak Valid\n";
         }
     }
 }
