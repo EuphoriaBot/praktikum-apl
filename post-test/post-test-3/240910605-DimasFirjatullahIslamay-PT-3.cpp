@@ -25,7 +25,7 @@ int TotalAkun = 0;
 int main()
 {
     string Nama, NIM;
-    int Coba = 0, userIndex = -1;
+    int Coba = 0, UserIndex = -1;
 
     while (true)
     {
@@ -57,17 +57,17 @@ int main()
                 cout << "Masukkan NIM: ";
                 cin >> NIM;
 
-                userIndex = -1;
+                UserIndex = -1;
                 for (int i = 0; i < TotalAkun; i++)
                 {
                     if (users[i].nama == Nama && users[i].nim == NIM)
                     {
-                        userIndex = i;
+                        UserIndex = i;
                         break;
                     }
                 }
 
-                if (userIndex != -1)
+                if (UserIndex != -1)
                 {
                     cout << "Login Berhasil" << endl;
                     break;
@@ -99,39 +99,39 @@ int main()
 
                 if (pilihan == 1)
                 {
-                    int index = users[userIndex].totalTanaman;
+                    int index = users[UserIndex].totalTanaman;
                     cout << "Masukkan Nama Tanaman: ";
-                    cin >> users[userIndex].tanaman[index].nama;
+                    cin >> users[UserIndex].tanaman[index].nama;
                     cout << "Masukkan Jenis Tanaman: ";
-                    cin >> users[userIndex].tanaman[index].jenis;
+                    cin >> users[UserIndex].tanaman[index].jenis;
                     cout << "Masukkan Jumlah Tanaman: ";
-                    cin >> users[userIndex].tanaman[index].jumlah;
+                    cin >> users[UserIndex].tanaman[index].jumlah;
                     cout << "Masukkan Frekuensi Penyiraman (Berapa kali per minggu): ";
-                    cin >> users[userIndex].tanaman[index].siram;
+                    cin >> users[UserIndex].tanaman[index].siram;
                     cout << "Masukkan Frekuensi Pemupukan (Berapa kali per bulan): ";
-                    cin >> users[userIndex].tanaman[index].pupuk;
+                    cin >> users[UserIndex].tanaman[index].pupuk;
                     cout << "Masukkan Suhu Tanaman: ";
-                    cin >> users[userIndex].tanaman[index].suhu;
-                    users[userIndex].totalTanaman++;
+                    cin >> users[UserIndex].tanaman[index].suhu;
+                    users[UserIndex].totalTanaman++;
                     cout << "Tanaman Berhasil Ditambahkan" << endl;
                 }
                 else if (pilihan == 2)
                 {
-                    if (users[userIndex].totalTanaman == 0)
+                    if (users[UserIndex].totalTanaman == 0)
                     {
                         cout << "Belum Ada Tanaman" << endl;
                     }
                     else
                     {
                         cout << "=== DAFTAR TANAMAN ===" << endl;
-                        for (int i = 0; i < users[userIndex].totalTanaman; i++)
+                        for (int i = 0; i < users[UserIndex].totalTanaman; i++)
                         {
-                            cout << i + 1 << ". " << users[userIndex].tanaman[i].nama << " | "
-                                 << users[userIndex].tanaman[i].jenis << " | "
-                                 << users[userIndex].tanaman[i].jumlah << " Tanaman | "
-                                 << users[userIndex].tanaman[i].siram << "Kali Siram Per Minggu | "
-                                 << users[userIndex].tanaman[i].pupuk << "Kali Pupuk Per Bulan | "
-                                 << users[userIndex].tanaman[i].suhu << "Derajat Celsius" << endl;
+                            cout << i + 1 << ". " << users[UserIndex].tanaman[i].nama << " | "
+                                 << users[UserIndex].tanaman[i].jenis << " | "
+                                 << users[UserIndex].tanaman[i].jumlah << " Tanaman | "
+                                 << users[UserIndex].tanaman[i].siram << "Kali Siram Per Minggu | "
+                                 << users[UserIndex].tanaman[i].pupuk << "Kali Pupuk Per Bulan | "
+                                 << users[UserIndex].tanaman[i].suhu << "Derajat Celsius" << endl;
                         }
                     }
                 }
@@ -141,21 +141,21 @@ int main()
                     cout << "Masukkan Nomor Tanaman Yang Ingin Diupdate: ";
                     cin >> index;
 
-                    if (index > 0 && index <= users[userIndex].totalTanaman)
+                    if (index > 0 && index <= users[UserIndex].totalTanaman)
                     {
                         index--;
                         cout << "Masukkan Nama Tanaman Baru: ";
-                        cin >> users[userIndex].tanaman[index].nama;
+                        cin >> users[UserIndex].tanaman[index].nama;
                         cout << "Masukkan Jenis Tanaman Baru: ";
-                        cin >> users[userIndex].tanaman[index].jenis;
+                        cin >> users[UserIndex].tanaman[index].jenis;
                         cout << "Masukkan Jumlah Tanaman Baru: ";
-                        cin >> users[userIndex].tanaman[index].jumlah;
+                        cin >> users[UserIndex].tanaman[index].jumlah;
                         cout << "Masukkan Frekuensi Penyiraman Baru: ";
-                        cin >> users[userIndex].tanaman[index].siram;
+                        cin >> users[UserIndex].tanaman[index].siram;
                         cout << "Masukkan Frekuensi Pemupukan Baru: ";
-                        cin >> users[userIndex].tanaman[index].pupuk;
+                        cin >> users[UserIndex].tanaman[index].pupuk;
                         cout << "Masukkan Suhu Tanaman Baru: ";
-                        cin >> users[userIndex].tanaman[index].suhu;
+                        cin >> users[UserIndex].tanaman[index].suhu;
                         cout << "Tanaman Berhasil Diperbarui" << endl;
                     }
                     else
@@ -169,13 +169,13 @@ int main()
                     cout << "Masukkan Nomor Tanaman Yang Ingin Dihapus: ";
                     cin >> index;
 
-                    if (index > 0 && index <= users[userIndex].totalTanaman)
+                    if (index > 0 && index <= users[UserIndex].totalTanaman)
                     {
-                        for (int i = index - 1; i < users[userIndex].totalTanaman - 1; i++)
+                        for (int i = index - 1; i < users[UserIndex].totalTanaman - 1; i++)
                         {
-                            users[userIndex].tanaman[i] = users[userIndex].tanaman[i + 1];
+                            users[UserIndex].tanaman[i] = users[UserIndex].tanaman[i + 1];
                         }
-                        users[userIndex].totalTanaman--;
+                        users[UserIndex].totalTanaman--;
                         cout << "Tanaman Berhasil Dihapus" << endl;
                     }
                     else
