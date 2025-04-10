@@ -97,6 +97,29 @@ void LihatTanaman(const User &user)
     }
 }
 
+void lihatTanaman(const User &user, string jenisFilter)
+{
+    bool ditemukan = false;
+    cout << "=== Tanaman Dengan Jenis " << jenisFilter << " ===" << endl;
+    for (int i = 0; i < user.totalTanaman; i++)
+    {
+        if (user.tanaman[i].jenis == jenisFilter)
+        {
+            cout << i + 1 << ". " << user.tanaman[i].nama << " | "
+                 << user.tanaman[i].jenis << " | "
+                 << user.tanaman[i].jumlah << " Tanaman | "
+                 << user.tanaman[i].siram << " Kali Siram/Minggu | "
+                 << user.tanaman[i].pupuk << " Kali Pupuk/Bulan | "
+                 << user.tanaman[i].suhu << " Derajat Celcius" << endl;
+            ditemukan = true;
+        }
+    }
+    if (!ditemukan)
+    {
+        cout << "Tanaman Tidak Ditemukan" << endl;
+    }
+}
+
 void UpdateTanaman(User &user)
 {
     int index;
@@ -155,7 +178,8 @@ void MenuTanaman(User &user)
         cout << "2. Lihat Tanaman" << endl;
         cout << "3. Update Tanaman" << endl;
         cout << "4. Hapus Tanaman" << endl;
-        cout << "5. Logout" << endl;
+        cout << "5. Lihat Tanaman Berdasarkan Jenis" << endl;
+        cout << "6. Logout" << endl;
         cout << "Pilih: ";
         cin >> pilihan;
 
@@ -174,6 +198,14 @@ void MenuTanaman(User &user)
             HapusTanaman(user);
             break;
         case 5:
+        {
+            string jenis;
+            cout << "Masukkan Jenis Tanaman yang Ingin Dilihat: ";
+            cin >> jenis;
+            lihatTanaman(user, jenis);
+            break;
+        }
+        case 6:
             cout << "Logout Berhasil" << endl;
             return;
         default:
