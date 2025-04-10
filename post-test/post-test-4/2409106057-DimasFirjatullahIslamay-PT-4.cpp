@@ -97,7 +97,7 @@ void LihatTanaman(const User &user)
     }
 }
 
-void lihatTanaman(const User &user, string jenisFilter)
+void LihatTanaman(const User &user, string jenisFilter)
 {
     bool ditemukan = false;
     cout << "=== Tanaman Dengan Jenis " << jenisFilter << " ===" << endl;
@@ -202,7 +202,7 @@ void MenuTanaman(User &user)
             string jenis;
             cout << "Masukkan Jenis Tanaman yang Ingin Dilihat: ";
             cin >> jenis;
-            lihatTanaman(user, jenis);
+            LihatTanaman(user, jenis);
             break;
         }
         case 6:
