@@ -73,7 +73,7 @@ void TambahTanaman(User *user)
     cin >> user->tanaman[index].pupuk;
     cout << "Masukkan Suhu Tanaman (Celcius): ";
     cin >> user->tanaman[index].suhu;
-    user->totalTanaman++; // 🔄 DITAMBAH
+    user->totalTanaman++;
     cout << "Tanaman Berhasil Ditambahkan" << endl;
 }
 
