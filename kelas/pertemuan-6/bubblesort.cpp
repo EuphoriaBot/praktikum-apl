@@ -1,19 +1,20 @@
 #include <iostream>
 using namespace std;
-int array[4] = {44, 27, 21, 1};
-int n = sizeof(array) / sizeof(array[0]);
+
+int Dimas[4] = {44, 27, 21, 1};
+int n = sizeof(Dimas) / sizeof(Dimas[0]);
 void bubbleSort()
 {
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < (n - i - 1); j++)
         {
-            if (array[j] > array[j + 1])
+            if (Dimas[j] > Dimas[j + 1])
             {
                 // Menukar elemen jika elemen sebelumnya lebih besar
-                int temp = array[j];
-                array[j] = array[j + 1];
-                array[j + 1] = temp;
+                int temp = Dimas[j];
+                Dimas[j] = Dimas[j + 1];
+                Dimas[j + 1] = temp;
             }
         }
         // Menampilkan proses sorting pada setiap iterasi
@@ -22,7 +23,7 @@ void bubbleSort()
         cout << "Proses [" << i + 1 << "] :";
         for (int k = 0; k < n; k++)
         {
-            cout << " " << array[k];
+            cout << " " << Dimas[k];
         }
     }
 }
@@ -32,7 +33,7 @@ int main()
     cout << "Data sebelum diurutkan: " << endl;
     for (int i = 0; i < n; i++)
     {
-        cout << array[i] << " ";
+        cout << Dimas[i] << " ";
     }
     bubbleSort();
     // Menampilkan data setelah dilakukan sorting
@@ -40,7 +41,7 @@ int main()
          << "Data sesudah diurutkan: " << endl;
     for (int i = 0; i < n; i++)
     {
-        cout << array[i] << " ";
+        cout << Dimas[i] << " ";
     }
     return 0;
 }
