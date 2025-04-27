@@ -26,7 +26,7 @@ void DaftarAkun(User users[], int &TotalAkun)
 {
     if (TotalAkun >= 100)
     {
-        cout << "Batas maksimum akun (100) telah tercapai!" << endl;
+        cout << "Akun Sudah Mencapai Max" << endl;
         return;
     }
 
@@ -174,6 +174,94 @@ void HapusTanaman(User *user)
     }
 }
 
+void BubbleSort(Tanaman tanaman[], int totalTanaman)
+{
+    for (int i = 0; i < totalTanaman - 1; i++)
+    {
+        for (int j = 0; j < totalTanaman - i - 1; j++)
+        {
+            if (tanaman[j].nama > tanaman[j + 1].nama)
+            {
+                Tanaman temp = tanaman[j];
+                tanaman[j] = tanaman[j + 1];
+                tanaman[j + 1] = temp;
+            }
+        }
+    }
+}
+
+void InsertionSort(Tanaman tanaman[], int totalTanaman)
+{
+    for (int i = 1; i < totalTanaman; i++)
+    {
+        Tanaman key = tanaman[i];
+        int j = i - 1;
+        while (j >= 0 && tanaman[j].siram < key.siram)
+        {
+            tanaman[j + 1] = tanaman[j];
+            j = j - 1;
+        }
+        tanaman[j + 1] = key;
+    }
+}
+
+void SelectionSort(Tanaman tanaman[], int totalTanaman)
+{
+    for (int i = 0; i < totalTanaman - 1; i++)
+    {
+        int max = i;
+        for (int j = i + 1; j < totalTanaman; j++)
+        {
+            if (tanaman[j].pupuk > tanaman[max].pupuk)
+            {
+                max = j;
+            }
+        }
+        Tanaman temp = tanaman[i];
+        tanaman[i] = tanaman[max];
+        tanaman[max] = temp;
+    }
+}
+
+void SortingTanaman(User *user, int pilihan)
+{
+    if (user->totalTanaman == 0)
+    {
+        cout << "Belum Ada Data Tanaman" << endl;
+        return;
+    }
+
+    switch (pilihan)
+    {
+    case 1:
+        BubbleSort(user->tanaman, user->totalTanaman);
+        cout << "Tanaman Berhasil Di Sorting Berdasarkan Nama" << endl;
+        break;
+    case 2:
+        InsertionSort(user->tanaman, user->totalTanaman);
+        cout << "Tanaman Berhasil Di Sorting Berdasarkan Frekuensi Penyiraman" << endl;
+        break;
+    case 3:
+        SelectionSort(user->tanaman, user->totalTanaman);
+        cout << "Tanaman Berhasil Di Sorting Berdasarkan Frekuensi Pemupukan" << endl;
+        break;
+    default:
+        cout << "Pilihan Tidak Valid" << endl;
+        return;
+    }
+
+    cout << "=== Daftar Tanaman ===" << endl;
+    for (int i = 0; i < user->totalTanaman; i++)
+    {
+        cout << i + 1 << ". " << user->tanaman[i].nama << " | "
+             << user->tanaman[i].jenis << " | "
+             << user->tanaman[i].jumlah << " Tanaman | "
+             << user->tanaman[i].siram << " Kali Siram/Minggu | "
+             << user->tanaman[i].pupuk << " Kali Pupuk/Bulan | "
+             << user->tanaman[i].suhu << " Derajat Celcius" << endl;
+    }
+}
+
 void MenuTanaman(User *user)
 {
     while (true)
@@ -184,8 +272,9 @@ void MenuTanaman(User *user)
         cout << "2. Lihat Tanaman" << endl;
         cout << "3. Update Tanaman" << endl;
         cout << "4. Hapus Tanaman" << endl;
-        cout << "5. Lihat Tanaman Berdasarkan Jenis" << endl;
-        cout << "6. Logout" << endl;
+        cout << "5. Cari Tanaman Berdasarkan Jenis" << endl;
+        cout << "6. Sorting Tanaman" << endl;
+        cout << "7. Logout" << endl;
         cout << "Pilih: ";
         cin >> pilihan;
 
@@ -206,12 +295,23 @@ void MenuTanaman(User *user)
         case 5:
         {
             string jenis;
-            cout << "Masukkan Jenis Tanaman yang Ingin Dilihat: ";
+            cout << "Masukkan Jenis Tanaman yang Ingin Dicari: ";
             cin >> jenis;
             LihatTanaman(user, jenis);
             break;
         }
         case 6:
+        {
+            int sortingPilihan;
+            cout << "1. Sorting Berdasarkan Nama" << endl;
+            cout << "2. Sorting Berdasarkan Frekuensi Penyiraman" << endl;
+            cout << "3. Sorting Berdasarkan Frekuensi Pemupukan" << endl;
+            cout << "Pilih: ";
+            cin >> sortingPilihan;
+            SortingTanaman(user, sortingPilihan);
+            break;
+        }
+        case 7:
             cout << "Logout Berhasil" << endl;
             return;
         default:
@@ -250,7 +350,7 @@ int main()
         }
         else if (Pilihan == 3)
         {
-            cout << "Terima kasih telah menggunakan program ini" << endl;
+            cout << "Terimakasih Telah Menggunakan Program Ini" << endl;
             break;
         }
         else
