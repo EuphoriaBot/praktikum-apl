@@ -223,7 +223,7 @@ void SelectionSort(Tanaman tanaman[], int totalTanaman)
     }
 }
 
-void SortingTanaman(User *user, int pilihan)
+void SortingTanaman(const User *user, int pilihan)
 {
     if (user->totalTanaman == 0)
     {
@@ -231,34 +231,40 @@ void SortingTanaman(User *user, int pilihan)
         return;
     }
 
+    Tanaman SalinTanaman[100];
+    for (int i = 0; i < user->totalTanaman; i++)
+    {
+        SalinTanaman[i] = user->tanaman[i];
+    }
+
     switch (pilihan)
     {
     case 1:
-        BubbleSort(user->tanaman, user->totalTanaman);
-        cout << "Tanaman Berhasil Di Sorting Berdasarkan Nama" << endl;
+        BubbleSort(SalinTanaman, user->totalTanaman);
+        cout << "Tanaman Disorting Berdasarkan Nama" << endl;
         break;
     case 2:
-        InsertionSort(user->tanaman, user->totalTanaman);
-        cout << "Tanaman Berhasil Di Sorting Berdasarkan Frekuensi Penyiraman" << endl;
+        InsertionSort(SalinTanaman, user->totalTanaman);
+        cout << "Tanaman Disorting Berdasarkan Frekuensi Penyiraman" << endl;
         break;
     case 3:
-        SelectionSort(user->tanaman, user->totalTanaman);
-        cout << "Tanaman Berhasil Di Sorting Berdasarkan Frekuensi Pemupukan" << endl;
+        SelectionSort(SalinTanaman, user->totalTanaman);
+        cout << "Tanaman Disorting Berdasarkan Frekuensi Pemupukan" << endl;
         break;
     default:
         cout << "Pilihan Tidak Valid" << endl;
         return;
     }
 
-    cout << "=== Daftar Tanaman ===" << endl;
+    cout << "=== Hasil Sorting Tanaman ===" << endl;
     for (int i = 0; i < user->totalTanaman; i++)
     {
-        cout << i + 1 << ". " << user->tanaman[i].nama << " | "
-             << user->tanaman[i].jenis << " | "
-             << user->tanaman[i].jumlah << " Tanaman | "
-             << user->tanaman[i].siram << " Kali Siram/Minggu | "
-             << user->tanaman[i].pupuk << " Kali Pupuk/Bulan | "
-             << user->tanaman[i].suhu << " Derajat Celcius" << endl;
+        cout << i + 1 << ". " << SalinTanaman[i].nama << " | "
+             << SalinTanaman[i].jenis << " | "
+             << SalinTanaman[i].jumlah << " Tanaman | "
+             << SalinTanaman[i].siram << " Kali Siram/Minggu | "
+             << SalinTanaman[i].pupuk << " Kali Pupuk/Bulan | "
+             << SalinTanaman[i].suhu << " Derajat Celcius" << endl;
     }
 }
 
